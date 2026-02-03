@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Un invito per Alice ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="overlay">
+  <div class="envelope">
+    <h2 id="openingText">Ciao Alice, ho un invito speciale per te... 🌹</h2>
+    <button id="openButton" onclick="openInvitation()">Clicca per aprire</button>
+  </div>
+</div>
+
+<div class="container" style="display: none;" id="invitationContent">
+  <div id="main-card">
+    <h1 id="question">Alice, vuoi essere la mia Valentine il 14/02/2026? ❤️</h1>
+    <div class="buttons-wrapper">
+      <button id="yesButton" onclick="accepted()">SÌ!</button>
+      <button id="noButton" onclick="moveButton()" onmouseover="moveButton()">no</button>
+    </div>
+  </div>
+</div>
+
+<div id="player" style="display:none;"></div>
+
+<script src="script.js"></script>
+<script>
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '0',
+      width: '0',
+      videoId: 'ssVvkfcL9HI',
+      playerVars: {
+        'autoplay': 0,
+        'controls': 0,
+        'start': 210
+      },
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    event.target.setVolume(30);
+  }
+</script>
+</body>
+</html>
